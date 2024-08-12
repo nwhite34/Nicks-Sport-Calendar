@@ -7,12 +7,9 @@ const ContentPageOne = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [error, setError] = useState(null);
 
-  // Replace 'your-backend.vercel.app' with your actual Vercel URL
-  const VERCEL_URL = 'https://nicks-sport-calendar.vercel.app';
-
   const fetchEvents = async () => {
     try {
-      const response = await axios.get(`${VERCEL_URL}/api/ufc-events`);
+      const response = await axios.get('/api/ufc-events');
       console.log('Fetched events:', response.data); // Debugging line
       if (Array.isArray(response.data)) {
         setEvents(response.data);
@@ -27,7 +24,7 @@ const ContentPageOne = () => {
 
   const fetchEventDetails = async (eventid) => {
     try {
-      const response = await axios.get(`${VERCEL_URL}/api/ufc-event/${eventid}`);
+      const response = await axios.get(`/api/ufc-event/${eventid}`);
       console.log('Fetched event details:', response.data); // Debugging line
       setSelectedEvent(response.data);
       setSelectedEventId(eventid); // Set the selected event ID
